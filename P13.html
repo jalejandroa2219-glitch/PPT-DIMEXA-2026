@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tabla de Productos y Timeline de Ingresos</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+
+        /* Logo styling */
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Custom color classes for the palette */
+        .text-primary-blue { color: #1764a1; }
+        .text-secondary-blue { color: #13b8cb; }
+        .text-dark-blue { color: #12222e; }
+        .text-navy-blue { color: #14446e; }
+        .text-light-blue { color: #7194c6; }
+        .text-teal-blue { color: #20adb4; }
+        .text-aqua-blue { color: #1a9fb1; }
+        .text-lavender-blue { color: #6496d4; }
+        
+        .bg-primary-blue { background-color: #1764a1; }
+        .bg-secondary-blue { background-color: #13b8cb; }
+        .bg-dark-blue { background-color: #12222e; }
+        .bg-navy-blue { background-color: #14446e; }
+        .bg-light-blue { background-color: #7194c6; }
+        .bg-teal-blue { background-color: #20adb4; }
+        .bg-aqua-blue { background-color: #1a9fb1; }
+        .bg-lavender-blue { background-color: #6496d4; }
+
+        /* Custom Scrollbar for inner content */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #F3F4F6;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 3px;
+        }
+
+        .product-card {
+            font-size: 0.75rem; /* text-xs */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 10px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #E5E7EB;
+            margin-bottom: 6px;
+        }
+        
+        .timeline-header {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            display: inline-block;
+            margin-left: 10px; /* Mover más a la derecha */
+        }
+
+        .section-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #F3F4F6;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+    <!-- Header -->
+    <div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-200 flex-shrink-0">
+        <div>
+            <h2 class="text-3xl font-bold text-dark-blue leading-tight">Portafolio &amp; Pipeline 2026</h2>
+            <p class="text-navy-blue text-sm mt-1">Detalle de Ingresos a Almacén | Activos vs. Nuevos Lanzamientos</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <!-- Logo CSP LifeSciences -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+            </div>
+            <!-- Logo DIMEXA -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex px-12 py-6 overflow-hidden bg-gray-50 gap-6 pl-20">
+        <!-- Left Column: Active Portfolio -->
+        <div class="w-5/12 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden">
+            <div class="bg-primary-blue/10 px-6 py-4 border-b border-primary-blue/20 flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-bold text-primary-blue"><i class="fas fa-boxes mr-2"></i>Portafolio Activo</h3>
+                    <p class="text-xs text-primary-blue">27 SKUs | Base del Negocio</p>
+                </div>
+                <span class="bg-primary-blue text-white text-xs font-bold px-3 py-1 rounded-full">CORE</span>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scroll flex-1">
+                <div class="grid grid-cols-1 gap-x-4">
+                    <!-- Header for Stock -->
+                    <div class="col-span-1 mb-2">
+                        <h4 class="text-xs font-bold text-navy-blue uppercase tracking-wide border-b border-gray-100 pb-1">Con Stock Actual (23 SKUs)</h4>
+                    </div>
+                    <div class="grid grid-cols-2 gap-x-3">
+                        <!-- Items -->
+                        <div class="product-card"><p class="font-medium text-dark-blue">ARPIZEX 10MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">CARVELAN 6.25MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">CARVELAN 12.5MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">CLOPTOP 75MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">FLAZAFORTE 30MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">DULOX 30MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">DULOX 60MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">DUTAZEX 0.5MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">GABATINEX 300MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">METAPLUS 500MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">METAPLUS F 1000</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">GAXTROX 20MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">GAXTROX 40MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">PANTOZEX 40MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">ROSUMAX 10MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">ROSUMAX 20MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">TAMSUNAX 0.4MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">MYTEL 80MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">WALSARTEX 80MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">OSTECOX 60MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">OSTECOX 90MG</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">FLUCOZONE 150</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                        <div class="product-card"><p class="font-medium text-dark-blue">CELOMEX 200 (x30)</p><i class="fas fa-check-circle text-teal-blue text-xs"></i></div>
+                    </div>
+                    
+                    <!-- Header for Incoming -->
+                    <div class="col-span-1 mt-4 mb-2">
+                        <h4 class="text-xs font-bold text-secondary-blue uppercase tracking-wide border-b border-secondary-blue/20 pb-1">Ingreso Mayo - Junio (4 SKUs)</h4>
+                    </div>
+                    <div class="grid grid-cols-2 gap-x-3">
+                        <div class="product-card border-secondary-blue/20 bg-secondary-blue/10"><p class="font-medium text-dark-blue">CIPROZONE 500</p><span class="text-[10px] bg-secondary-blue/20 text-secondary-blue px-1 rounded">Q2</span></div>
+                        <div class="product-card border-secondary-blue/20 bg-secondary-blue/10"><p class="font-medium text-dark-blue">ITRACOZONE 100</p><span class="text-[10px] bg-secondary-blue/20 text-secondary-blue px-1 rounded">Q2</span></div>
+                        <div class="product-card border-secondary-blue/20 bg-secondary-blue/10"><p class="font-medium text-dark-blue">BACICLUMAX</p><span class="text-[10px] bg-secondary-blue/20 text-secondary-blue px-1 rounded">Q2</span></div>
+                        <div class="product-card border-secondary-blue/20 bg-secondary-blue/10"><p class="font-medium text-dark-blue">OLANPREX 10MG</p><span class="text-[10px] bg-secondary-blue/20 text-secondary-blue px-1 rounded">Q2</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: New Products Timeline -->
+        <div class="w-7/12 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden">
+            <div class="bg-green-50 px-6 py-4 border-b border-green-100 flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-bold text-green-800"><i class="fas fa-rocket mr-2"></i>Nuevos Lanzamientos</h3>
+                    <p class="text-xs text-green-600">26 SKUs | Cronograma de Ingreso</p>
+                </div>
+                <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">INNOVACIÓN</span>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scroll flex-1">
+                <div class="relative border-l-2 border-gray-100 ml-3 pl-8 space-y-6"> <!-- Aumentado pl-6 a pl-8 -->
+                    <!-- Block: Feb-Mar -->
+                    <div class="relative">
+                        <div class="absolute -left-[33px] bg-green-100 border-2 border-green-500 w-4 h-4 rounded-full mt-1"></div>
+                        <div class="timeline-header bg-green-100 text-green-800">Febrero - Marzo (3)</div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">MUPICARE 2%</p><i class="fas fa-flask text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">CELOMEX 200 (x100)</p><i class="fas fa-capsules text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">GAXTROX 40 (x100)</p><i class="fas fa-pills text-gray-400 text-xs"></i></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Block: Mar-Apr -->
+                    <div class="relative">
+                        <div class="absolute -left-[33px] bg-green-100 border-2 border-green-500 w-4 h-4 rounded-full mt-1"></div>
+                        <div class="timeline-header bg-green-100 text-green-800">Marzo - Abril (8)</div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">KETOCLEAR Champú</p><i class="fas fa-pump-soap text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">SILDEZONE 100</p><i class="fas fa-pills text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">SILDEZONE 50</p><i class="fas fa-pills text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">TADALAZONE 20</p><i class="fas fa-pills text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">OSTECOX 120</p><i class="fas fa-tablets text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">BIONIÑO Susp.</p><i class="fas fa-baby text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">FINARIX 5</p><i class="fas fa-pills text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">VERTILUX 16</p><i class="fas fa-tablets text-gray-400 text-xs"></i></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Block: Apr-May -->
+                    <div class="relative">
+                        <div class="absolute -left-[33px] bg-green-100 border-2 border-green-500 w-4 h-4 rounded-full mt-1"></div>
+                        <div class="timeline-header bg-green-100 text-green-800">Abril - Mayo (11)</div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">PREGAZONE 75</p><i class="fas fa-brain text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">ESOFLUX 20</p><i class="fas fa-capsules text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">ESOFLUX 40</p><i class="fas fa-capsules text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">VITALIFES E 400</p><i class="fas fa-soft-serve text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">LEVOTOPLEX 750</p><i class="fas fa-bacteria text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">LEVOTOPLEX 500</p><i class="fas fa-bacteria text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">NEURILAX 100</p><i class="fas fa-brain text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">LEXPRAM 10</p><i class="fas fa-brain text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">REUMAX 100</p><i class="fas fa-bone text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">KLARITHROM 500</p><i class="fas fa-bacteria text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">AZIBIOTIC 500</p><i class="fas fa-bacteria text-gray-400 text-xs"></i></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Block: Jun-Jul -->
+                    <div class="relative">
+                        <div class="absolute -left-[33px] bg-green-100 border-2 border-green-500 w-4 h-4 rounded-full mt-1"></div>
+                        <div class="timeline-header bg-green-100 text-green-800">Junio - Julio (2)</div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">DESLOFAX 2.5</p><i class="fas fa-lungs text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">NEURILAX 25</p><i class="fas fa-brain text-gray-400 text-xs"></i></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Block: Jul-Aug -->
+                    <div class="relative">
+                        <div class="absolute -left-[33px] bg-green-100 border-2 border-green-500 w-4 h-4 rounded-full mt-1"></div>
+                        <div class="timeline-header bg-green-100 text-green-800">Julio - Agosto (2)</div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">INSERTEC 50</p><i class="fas fa-brain text-gray-400 text-xs"></i></div>
+                            <div class="product-card"><p class="font-medium text-dark-blue truncate">PAXENET 20</p><i class="fas fa-brain text-gray-400 text-xs"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18 flex-shrink-0">
+        <p class="text-gray-400 text-xs font-light">
+            <i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – 2026
+        </p>
+        <p class="text-gray-400 text-xs font-light">13</p>
+    </div>
+</div>
+</body>
+</html>

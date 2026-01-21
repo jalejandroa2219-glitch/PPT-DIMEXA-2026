@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sell In vs Sell Out – Rebate Estructurado</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+
+        /* Custom Badges for Rebates con colores de la paleta */
+        .rebate-badge-si {
+            background-color: rgba(23, 100, 161, 0.1);
+            border: 2px solid #1764a1;
+            color: #1764a1;
+        }
+        .rebate-badge-so {
+            background-color: rgba(19, 184, 203, 0.1);
+            border: 2px solid #13b8cb;
+            color: #13b8cb;
+        }
+        
+        /* Card Styling */
+        .metric-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+<!-- Header -->
+<div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-200">
+<div>
+<h2 class="text-3xl font-bold text-[#12222e] leading-tight">Sell-in acompaña al sell-out: Rebate Estratégico</h2>
+<p class="text-[#14446e] text-sm mt-1">Principio Clave | Plan 2026</p>
+</div>
+<div class="flex items-center space-x-4">
+<!-- Logo CSP LifeSciences -->
+<div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+<img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+</div>
+<!-- Logo DIMEXA -->
+<div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+<img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex px-12 py-8 bg-gray-50 items-center justify-center pl-22">
+<!-- Left Column: Chart Area -->
+<div class="w-7/12 h-full pr-8 flex flex-col">
+<div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 h-full flex flex-col relative">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-gray-700 ml-2 border-l-4 border-[#1764a1] pl-3">Comparativo &amp; Gap (+20%)</h3>
+<div class="bg-[#1764a1]/10 px-3 py-1 rounded-full border border-[#1764a1]/30">
+<p class="text-xs font-bold text-[#1764a1]"><i class="fas fa-chart-bar mr-1"></i>Forecast 2026</p>
+</div>
+</div>
+<div class="flex-1 relative w-full">
+<canvas id="sellChart"></canvas>
+</div>
+<!-- Data annotation overlay -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<!-- Chart.js will render bars here -->
+</div>
+</div>
+</div>
+<!-- Right Column: Policy & Rebate Badges -->
+<div class="w-5/12 h-full flex flex-col justify-between space-y-4">
+<!-- REBATE HIGHLIGHT SECTION (Major Visual Upgrade) -->
+<div class="metric-card p-6 border-t-8 border-[#1764a1] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-[#1764a1]/10 rounded-bl-full -mr-8 -mt-8 z-0"></div>
+<h4 class="text-xl font-extrabold text-[#12222e] mb-4 relative z-10 flex items-center">
+<i class="fas fa-tags text-[#1764a1] mr-2"></i>ESTRUCTURA DE REBATES
+                </h4>
+<div class="flex space-x-3 mb-4 relative z-10">
+<!-- Sell In Badge -->
+<div class="flex-1 rebate-badge-si rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-sm">
+<div class="bg-white rounded-full p-2 mb-2 shadow-sm">
+<i class="fas fa-truck-loading text-[#1764a1]"></i>
+</div>
+<p class="text-xs font-semibold uppercase tracking-wide">Por Sell In</p>
+<p class="text-2xl font-black text-[#1764a1]">1.5%</p>
+</div>
+<!-- Sell Out Badge -->
+<div class="flex-1 rebate-badge-so rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-sm">
+<div class="bg-white rounded-full p-2 mb-2 shadow-sm">
+<i class="fas fa-cash-register text-[#13b8cb]"></i>
+</div>
+<p class="text-xs font-semibold uppercase tracking-wide">Por Sell Out</p>
+<p class="text-2xl font-black text-[#13b8cb]">1.5%</p>
+</div>
+</div>
+<div class="bg-[#12222e] rounded-lg p-3 flex justify-between items-center relative z-10 shadow-lg">
+<p class="text-[#13b8cb] text-sm font-medium">Incentivo Total Aproximado</p>
+<p class="text-[#20adb4] text-xl font-bold">~ S/ 115.5 K</p>
+</div>
+</div>
+<!-- Operational Metrics Section -->
+<div class="metric-card p-5 border-l-4 border-[#14446e] flex flex-col justify-center flex-1">
+<h4 class="text-lg font-bold text-[#12222e] mb-4">Métricas de Control</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-gray-100 pb-2">
+<div class="flex items-center text-[#14446e]">
+<i class="fas fa-boxes mr-2 text-[#14446e]"></i>
+<p class="font-medium text-sm">Inventario Objetivo</p>
+</div>
+<p class="text-2xl font-bold text-[#12222e]">30 – 45 <span class="text-sm font-normal text-[#14446e]">Días</span></p>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex items-center text-[#14446e]">
+<i class="fas fa-exchange-alt mr-2 text-[#14446e]"></i>
+<p class="font-medium text-sm">Ratio (SI / SO)</p>
+</div>
+<p class="text-2xl font-bold text-[#1764a1]">1.20</p>
+</div>
+</div>
+</div>
+<!-- Insight Box -->
+<div class="bg-[#1764a1]/5 p-4 rounded-lg border border-[#1764a1]/20 shadow-sm">
+<p class="text-[#14446e] text-sm italic font-medium leading-relaxed">
+<i class="fas fa-info-circle mr-1 text-[#1764a1]"></i>
+                        El gap del 20% asegura disponibilidad total para la demanda de S/ 3.5MM sin riesgo de quiebre.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18">
+<p class="text-gray-400 text-xs font-light">
+<i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – 2026
+            </p>
+<p class="text-gray-400 text-xs font-light">7</p>
+</div>
+</div>
+<script>
+        const ctx = document.getElementById('sellChart').getContext('2d');
+        
+        // Data REAL Forecast 2026 (Updated based on user request)
+        // Sell Out = 3.5MM
+        // Sell In = 4.2MM (+20%)
+        const sellOutVal = 3.50;
+        const sellInVal = 4.20; 
+
+        const data = {
+            labels: ['Sell Out (Demanda)', 'Sell In (Abastecimiento)'],
+            datasets: [{
+                data: [sellOutVal, sellInVal],
+                backgroundColor: [
+                    '#7194c6', // Azul claro de la paleta para Sell Out
+                    '#1764a1'  // Azul principal de la paleta para Sell In
+                ],
+                borderRadius: 8,
+                barPercentage: 0.6,
+                categoryPercentage: 0.8,
+                borderWidth: 0
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: { top: 30, bottom: 10, left: 10, right: 10 }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5.0, // Scale adjusted for 4.2 max value
+                        grid: {
+                            color: '#F3F4F6',
+                            borderDash: [5, 5]
+                        },
+                        title: {
+                            display: true,
+                            text: 'Millones de Soles (S/)',
+                            font: { family: 'Roboto', size: 12, weight: '500' },
+                            color: '#14446e'
+                        },
+                        ticks: {
+                            callback: function(value) { return 'S/ ' + value; },
+                            font: { family: 'Roboto', size: 11 },
+                            color: '#14446e',
+                            stepSize: 1
+                        }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            font: { family: 'Montserrat', size: 13, weight: '600' },
+                            color: '#12222e'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(23, 100, 161, 0.95)',
+                        padding: 12,
+                        cornerRadius: 8,
+                        titleFont: { family: 'Montserrat', size: 14 },
+                        bodyFont: { family: 'Roboto', size: 13 },
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.parsed.y;
+                                return 'S/ ' + label.toFixed(2) + ' MM';
+                            }
+                        }
+                    }
+                },
+                animation: { duration: 0 }
+            },
+            plugins: [{
+                id: 'barLabels',
+                afterDatasetsDraw(chart, args, options) {
+                    const { ctx } = chart;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            
+                            // Draw Value
+                            ctx.fillStyle = index === 1 ? '#1764a1' : '#14446e';
+                            ctx.font = 'bold 20px Montserrat';
+                            ctx.textAlign = 'center';
+                            ctx.fillText('S/ ' + value.toFixed(2) + 'MM', bar.x, bar.y - 15);
+                            
+                            // Draw Percentage/Label
+                            ctx.font = '500 12px Roboto';
+                            ctx.fillStyle = '#14446e';
+                            const label = index === 0 ? 'Meta Comercial' : '+20% vs Plan';
+                            ctx.fillText(label, bar.x, bar.y - 38);
+                        });
+                    });
+                }
+            }]
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>

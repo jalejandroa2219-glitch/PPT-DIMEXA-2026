@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meta DIMEXA 2026: S/ 3.5MM</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-blue { color: #1764a1; }
+        .bg-brand-blue { background-color: #1764a1; }
+        .text-accent { color: #13b8cb; }
+        
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+        
+        /* Modern Card Styling */
+        .callout-box {
+            background-color: #ffffff;
+            border-left: 8px solid #1764a1;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-value-large {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+
+        .viability-card {
+            background-color: #ffffff;
+            border-right: 6px solid #10B981; /* Verde original */
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            animation: float-soft 4s ease-in-out infinite;
+        }
+
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+<!-- Header -->
+<div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-200">
+<div>
+<h2 class="text-3xl font-bold text-gray-800 leading-tight">Meta DIMEXA 2026: S/ 3.50MM Sell Out</h2>
+<div class="flex items-center gap-3 mt-1">
+<p class="text-gray-500 text-sm">Crecimiento del <strong class="text-green-600">+141%</strong> vs Base Real 2025</p>
+<span class="bg-gray-100 text-gray-500 text-[10px] px-2 py-0.5 rounded border border-gray-300">
+<i class="fas fa-info-circle mr-1"></i>Nota: 2025 inició operación en Abril
+                </span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<!-- Logo CSP LifeSciences -->
+<div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+<img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+</div>
+<!-- Logo DIMEXA -->
+<div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+<img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col items-center justify-center px-16 py-6 bg-gray-50 relative pl-22">
+<!-- Main Message -->
+<div class="w-full text-center mb-2 z-10">
+<p class="text-lg text-gray-700 font-normal">
+                    Objetivo agresivo pero <span class="font-bold text-green-600">validado operativamente</span> por el cierre 2025
+                </p>
+</div>
+<!-- Chart & Badge Container -->
+<div class="w-full flex justify-center items-center mb-6 relative">
+<!-- Chart Box -->
+<div class="w-3/4 h-80 bg-white p-6 rounded-xl shadow-md border border-gray-100 relative">
+<canvas id="targetChart"></canvas>
+<!-- Left Floating Card: Viability -->
+<div class="viability-card absolute top-8 -left-28 rounded-l-lg p-4 z-20 w-72 flex flex-col items-start">
+<div class="flex items-center gap-2 mb-2 w-full">
+<div class="bg-green-100 h-8 w-8 rounded-full flex items-center justify-center text-green-600 shadow-sm">
+<i class="fas fa-rocket text-sm"></i>
+</div>
+<span class="text-green-700 font-black text-sm uppercase tracking-wide">¡Objetivo Alcanzable!</span>
+</div>
+<div class="w-full border-b border-gray-100 mb-2"></div>
+<div class="w-full">
+<p class="text-[10px] text-gray-400 uppercase font-semibold">Run-Rate Mensual Necesario 2026</p>
+<p class="text-sm font-bold text-gray-600 mb-2">S/ 291K / mes</p>
+<div class="bg-green-50 rounded p-2 border border-green-100">
+<p class="text-[10px] text-green-800 font-bold mb-0.5">
+<i class="fas fa-check-circle mr-1"></i>Capacidad Demostrada:
+                                </p>
+<div class="flex justify-between items-end">
+<span class="text-sm text-gray-500">Octubre 2025:</span>
+<span class="text-xl font-black text-green-600">S/ 275K</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 94.5%"></div>
+</div>
+<p class="text-[9px] text-green-600 text-right mt-0.5 font-bold">94.5% del objetivo alcanzado</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Split Detail Cards -->
+<div class="w-3/4 flex space-x-6">
+<!-- Split Box 1: Core -->
+<div class="flex-1 callout-box p-4 flex items-center justify-between border-l-8 border-[#1764a1] bg-white">
+<div>
+<div class="flex items-center space-x-2 mb-1">
+<div class="w-8 h-8 rounded bg-[#1764a1]/10 flex items-center justify-center text-[#1764a1]">
+<i class="fas fa-cubes text-sm"></i>
+</div>
+<div>
+<p class="text-xs text-[#1764a1] uppercase tracking-widest font-bold">Portafolio Activo</p>
+<p class="text-[10px] text-gray-400">Productos Stock + Orgánico</p>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="stat-value-large text-3xl text-[#1764a1]">S/ 2.00MM</p>
+</div>
+</div>
+<!-- Split Box 2: New -->
+<div class="flex-1 callout-box p-4 flex items-center justify-between border-l-8 border-[#13b8cb] bg-white">
+<div>
+<div class="flex items-center space-x-2 mb-1">
+<div class="w-8 h-8 rounded bg-[#13b8cb]/10 flex items-center justify-center text-[#13b8cb]">
+<i class="fas fa-flask text-sm"></i>
+</div>
+<div>
+<p class="text-xs text-[#13b8cb] uppercase tracking-widest font-bold">Nuevos Productos</p>
+<p class="text-[10px] text-gray-400">Moléculas Nuevas (Feb-Jul)</p>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="stat-value-large text-3xl text-[#13b8cb]">S/ 1.50MM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18">
+<p class="text-gray-400 text-xs font-light">
+<i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – 2026
+            </p>
+<p class="text-gray-400 text-xs font-light">5</p>
+</div>
+</div>
+<script>
+        const ctx = document.getElementById('targetChart').getContext('2d');
+        
+        // Data logic:
+        // Base 2025 Real = 1.45MM
+        // Target 2026 = 3.50MM
+        const data = {
+            labels: ['2025 Base Real', '2026 Target DIMEXA'],
+            datasets: [{
+                data: [1.45, 3.50], 
+                backgroundColor: [
+                    '#9CA3AF', // Gray for Base
+                    '#1764a1'  // Brand Blue from palette
+                ],
+                borderRadius: 6,
+                barPercentage: 0.5,
+                categoryPercentage: 0.8
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: { top: 60, bottom: 10, right: 30, left: 10 }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 4.5, 
+                        grid: {
+                            color: '#F3F4F6',
+                            borderDash: [5, 5]
+                        },
+                        title: {
+                            display: true,
+                            text: 'Millones de Soles (S/)',
+                            font: { family: 'Roboto', size: 12, weight: 'bold' },
+                            color: '#9CA3AF'
+                        },
+                        ticks: {
+                            font: { family: 'Roboto', size: 12 },
+                            callback: function(value) { return 'S/ ' + value + 'MM'; }
+                        }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            font: { family: 'Montserrat', size: 13, weight: 'bold' },
+                            color: '#374151'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(23, 100, 161, 0.9)',
+                        titleFont: { family: 'Montserrat' },
+                        bodyFont: { family: 'Roboto' },
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                return 'Sell Out: S/ ' + context.parsed.y + 'MM';
+                            }
+                        }
+                    }
+                },
+                animation: { duration: 0 }
+            },
+            plugins: [{
+                id: 'customLabels',
+                afterDatasetsDraw(chart, args, options) {
+                    const { ctx } = chart;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            ctx.fillStyle = index === 1 ? '#1764a1' : '#6B7280';
+                            ctx.font = 'bold 24px Montserrat';
+                            ctx.textAlign = 'center';
+                            
+                            // Format value label
+                            let labelText = 'S/ ' + value.toFixed(2) + 'MM';
+                            ctx.fillText(labelText, bar.x, bar.y - 15);
+                            
+                            // Add growth label for the second bar
+                            if (index === 1) {
+                                const growth = 141; // (3.5 - 1.45)/1.45 * 100 approx 141%
+                                ctx.fillStyle = '#10B981'; // Verde original
+                                ctx.font = 'bold 18px Roboto';
+                                ctx.fillText('▲ +' + growth + '%', bar.x, bar.y - 45);
+                            }
+                        });
+                    });
+                }
+            }]
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>

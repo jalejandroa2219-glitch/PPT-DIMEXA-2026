@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Presentación DIMEXA 2026 - 17 Slides</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1E3A8A;
+        }
+        
+        .header h1 {
+            color: #1E3A8A;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+        
+        .slides-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .slide-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #1E3A8A;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .slide-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .slide-title {
+            font-size: 1.3rem;
+            color: #1E3A8A;
+            font-weight: 600;
+        }
+        
+        .slide-number {
+            background: #1E3A8A;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .slide-frame {
+            width: 100%;
+            height: 720px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .slide-note {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+            text-align: right;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: #1E3A8A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #1e40af;
+        }
+        
+        .jump-to {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .jump-to input {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #e5e7eb;
+            z-index: 1001;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #1E3A8A;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .slide-titles {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .slide-titles h3 {
+            color: #1E3A8A;
+            margin-bottom: 15px;
+        }
+        
+        .titles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .title-item {
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .title-item:hover {
+            background: #e0f2fe;
+        }
+        
+        .title-number {
+            font-weight: bold;
+            color: #1E3A8A;
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 1400px) {
+            .slide-frame {
+                height: 600px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .slide-frame {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .slide-frame {
+                height: 400px;
+            }
+            
+            .controls {
+                flex-wrap: wrap;
+                top: 10px;
+                right: 10px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de progreso -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+    
+    <!-- Controles de navegación -->
+    <div class="controls">
+        <button class="nav-btn" onclick="scrollToTop()">↑ Inicio</button>
+        <button class="nav-btn" onclick="showTitles()">📋 Títulos</button>
+        <button class="nav-btn" onclick="window.print()">🖨️ Imprimir</button>
+        <div class="jump-to">
+            <input type="number" id="jumpInput" min="1" max="17" placeholder="Slide" value="1">
+            <button class="nav-btn" onclick="jumpToSlide()">Ir</button>
+        </div>
+    </div>
+    
+    <!-- Lista de títulos -->
+    <div class="slide-titles" id="titlesContainer">
+        <h3>Navegar por Slides</h3>
+        <div class="titles-grid" id="titlesGrid">
+            <!-- Los títulos se generarán automáticamente -->
+        </div>
+    </div>
+    
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="header">
+            <h1>📊 Plan Comercial DIMEXA 2026</h1>
+            <p>Presentación Ejecutiva Completa - 17 Slides</p>
+        </div>
+        
+        <div class="slides-container" id="slidesContainer">
+            <!-- Los slides se insertarán aquí automáticamente -->
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 CSP Life Sciences - DIMEXA. Todos los derechos reservados.</p>
+            <p><i class="fas fa-lock"></i> Documento Confidencial</p>
+        </div>
+    </div>
+    
+    <script>
+        // Configuración de los slides
+        const totalSlides = 17;
+        const basePath = 'file:///Users/Nueva%20carpeta/';
+        
+        // Títulos descriptivos para cada slide (puedes modificarlos)
+        const slideTitles = [
+            "Portada - Plan Comercial 2026",
+            "Resumen Ejecutivo - Objetivos",
+            "Evolución DIMEXA",
+            "Modelo de Ejecución Comercial",
+            "Estrategia Comercial 2026",
+            "Meta y Capacidad Operativa",
+            "Palancas de Crecimiento",
+            "Incentivos y Control Comercial",
+            "Disciplina de Inventarios",
+            "Foco Comercial",
+            "Expansión Terapéutica 2026",
+            "Control y Mitigación",
+            "Portafolio y Roadmap 2026",
+            "Registro de Productos 2026",
+            "Universo Comercial Fermacéutico Perú",
+            "Cobertura y Productividad Comercial",
+            "Conclusiones del Plan 2026"
+        ];
+        
+        // Generar los slides automáticamente
+        function generateSlides() {
+            const container = document.getElementById('slidesContainer');
+            const titlesGrid = document.getElementById('titlesGrid');
+            
+            let html = '';
+            let titlesHtml = '';
+            
+            for (let i = 1; i <= totalSlides; i++) {
+                const fileName = `P${i}.html`;
+                const filePath = basePath + fileName;
+                const slideTitle = slideTitles[i-1] || `Slide ${i}`;
+                
+                // HTML para el slide
+                html += `
+                    <div class="slide-item" id="slide-${i}">
+                        <div class="slide-header">
+                            <div class="slide-title">${slideTitle}</div>
+                            <div class="slide-number">${i}</div>
+                        </div>
+                        <iframe 
+                            src="${filePath}" 
+                            class="slide-frame" 
+                            title="${slideTitle}"
+                            onload="slideLoaded(this, ${i})"
+                            onerror="slideError(this, ${i})">
+                        </iframe>
+                        <div class="slide-note">Slide ${i} de ${totalSlides}</div>
+                    </div>
+                `;
+                
+                // HTML para la lista de títulos
+                titlesHtml += `
+                    <div class="title-item" onclick="scrollToSlide(${i})">
+                        <span class="title-number">${i}.</span>
+                        ${slideTitle}
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+            titlesGrid.innerHTML = titlesHtml;
+        }
+        
+        // Mostrar/ocultar lista de títulos
+        function showTitles() {
+            const titlesContainer = document.getElementById('titlesContainer');
+            titlesContainer.style.display = titlesContainer.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Navegar a un slide específico
+        function scrollToSlide(slideNumber) {
+            const slideElement = document.getElementById(`slide-${slideNumber}`);
+            if (slideElement) {
+                slideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('jumpInput').value = slideNumber;
+                updateProgress(slideNumber);
+                showTitles(); // Oculta la lista después de seleccionar
+            }
+        }
+        
+        // Ir al slide especificado en el input
+        function jumpToSlide() {
+            const input = document.getElementById('jumpInput');
+            let slideNum = parseInt(input.value);
+            
+            if (isNaN(slideNum) || slideNum < 1) slideNum = 1;
+            if (slideNum > totalSlides) slideNum = totalSlides;
+            
+            input.value = slideNum;
+            scrollToSlide(slideNum);
+        }
+        
+        // Ir al inicio
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('jumpInput').value = 1;
+            updateProgress(1);
+        }
+        
+        // Actualizar barra de progreso
+        function updateProgress(currentSlide) {
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+        
+        // Imprimir la presentación
+        function printPresentation() {
+            window.print();
+        }
+        
+        // Manejar carga exitosa del slide
+        function slideLoaded(iframe, slideNumber) {
+            console.log(`Slide ${slideNumber} cargado correctamente`);
+            iframe.style.opacity = '1';
+        }
+        
+        // Manejar error de carga del slide
+        function slideError(iframe, slideNumber) {
+            console.error(`Error cargando Slide ${slideNumber}`);
+            iframe.contentDocument.body.innerHTML = `
+                <div style="display:flex; justify-content:center; align-items:center; height:100%; color:#666; font-family:Arial;">
+                    <div style="text-align:center;">
+                        <h2>⚠️ Slide ${slideNumber} no disponible</h2>
+                        <p>Archivo: P${slideNumber}.html</p>
+                        <p>Verifica que el archivo existe en la carpeta</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Actualizar progreso al hacer scroll
+        window.addEventListener('scroll', function() {
+            const slides = document.querySelectorAll('.slide-item');
+            const scrollPosition = window.scrollY + 100;
+            
+            for (let i = slides.length - 1; i >= 0; i--) {
+                const slide = slides[i];
+                if (slide.offsetTop <= scrollPosition) {
+                    const slideNumber = parseInt(slide.id.split('-')[1]);
+                    updateProgress(slideNumber);
+                    document.getElementById('jumpInput').value = slideNumber;
+                    break;
+                }
+            }
+        });
+        
+        // Inicializar la presentación
+        window.onload = function() {
+            generateSlides();
+            updateProgress(1);
+            
+            // Mostrar advertencia sobre seguridad de archivos locales
+            setTimeout(() => {
+                console.log('🔧 Si los slides no se cargan, prueba:');
+                console.log('1. Usar Firefox (menos restrictivo con archivos locales)');
+                console.log('2. Ejecutar Chrome con: chrome.exe --allow-file-access-from-files');
+                console.log('3. Usar un servidor local (Live Server, XAMPP)');
+            }, 1000);
+        };
+        
+        // Teclas de navegación
+        document.addEventListener('keydown', function(e) {
+            const currentSlide = parseInt(document.getElementById('jumpInput').value);
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                // Siguiente slide
+                const nextSlide = Math.min(currentSlide + 1, totalSlides);
+                scrollToSlide(nextSlide);
+                e.preventDefault();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                // Slide anterior
+                const prevSlide = Math.max(currentSlide - 1, 1);
+                scrollToSlide(prevSlide);
+                e.preventDefault();
+            } else if (e.key === 'Home') {
+                scrollToTop();
+                e.preventDefault();
+            } else if (e.key === 'End') {
+                scrollToSlide(totalSlides);
+                e.preventDefault();
+            } else if (e.key === 't' || e.key === 'T') {
+                showTitles();
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

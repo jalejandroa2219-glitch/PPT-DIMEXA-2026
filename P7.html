@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mix de Crecimiento DIMEXA</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+
+        .legend-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .shadow-glow-blue {
+            box-shadow: 0 4px 20px rgba(23, 100, 161, 0.15);
+        }
+        .shadow-glow-cyan {
+            box-shadow: 0 4px 20px rgba(19, 184, 203, 0.15);
+        }
+        
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        /* Estilos específicos con colores de la paleta */
+        .paleta-azul { color: #1764a1; }
+        .paleta-azul-oscuro { color: #12222e; }
+        .paleta-azul-medio { color: #14446e; }
+        .paleta-turquesa { color: #13b8cb; }
+        .paleta-turquesa-oscuro { color: #20adb4; }
+        .paleta-turquesa-medio { color: #1a9fb1; }
+        .paleta-azul-claro { color: #7194c6; }
+        .paleta-azul-intermedio { color: #6496d4; }
+        
+        .bg-paleta-azul { background-color: #1764a1; }
+        .bg-paleta-azul-oscuro { background-color: #12222e; }
+        .bg-paleta-azul-medio { background-color: #14446e; }
+        .bg-paleta-turquesa { background-color: #13b8cb; }
+        .bg-paleta-turquesa-oscuro { background-color: #20adb4; }
+        .bg-paleta-turquesa-medio { background-color: #1a9fb1; }
+        .bg-paleta-azul-claro { background-color: #7194c6; }
+        .bg-paleta-azul-intermedio { background-color: #6496d4; }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+<!-- Header -->
+<div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-100">
+<div>
+<h2 class="text-3xl font-extrabold paleta-azul-oscuro leading-tight">Mix de Crecimiento DIMEXA</h2>
+<div class="flex items-center mt-1 space-x-2">
+<span class="bg-paleta-azul/10 paleta-azul text-xs font-semibold px-2.5 py-0.5 rounded">2026 Strategy</span>
+<p class="paleta-azul-medio text-sm">Equilibrio estratégico: Base Sólida + Expansión Acelerada</p>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<!-- Logo CSP LifeSciences -->
+<div class="h-10 w-28 bg-gray-50 border border-gray-200 flex items-center justify-center rounded font-medium">
+<img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+</div>
+<!-- Logo DIMEXA -->
+<div class="h-10 w-28 bg-gray-50 border border-gray-200 flex items-center justify-center rounded font-medium">
+<img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex px-16 py-8 bg-gray-50 items-center justify-center relative overflow-hidden pl-22">
+<!-- Decorative Background Elements -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-paleta-azul/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-paleta-turquesa/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform -translate-x-1/2 translate-y-1/2"></div>
+<!-- Left: Chart Area -->
+<div class="w-5/12 h-full flex flex-col items-center justify-center relative z-10">
+<div class="relative" style="height: 420px; width: 420px;">
+<canvas id="mixChart"></canvas>
+<!-- Center Text Overlay -->
+<div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pointer-events-none">
+<p class="paleta-azul-medio text-xs font-bold uppercase tracking-widest mb-1">Total Target</p>
+<p class="text-5xl font-extrabold paleta-azul-oscuro tracking-tight">S/ 3.5<span class="text-2xl paleta-azul-medio ml-1">MM</span></p>
+<div class="mt-2 px-3 py-1 bg-paleta-turquesa-oscuro/10 rounded-full">
+<p class="paleta-turquesa-oscuro text-xs font-bold flex items-center">
+<i class="fas fa-chart-line mr-1"></i> <span class="paleta-turquesa-medio">25%</span> del Total Cía.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Legend/Details -->
+<div class="w-7/12 pl-12 flex flex-col justify-center space-y-6 z-10">
+<!-- Card 1: Portafolio Activo -->
+<div class="legend-card bg-white p-6 rounded-xl shadow-glow-blue border-l-8 border-paleta-azul relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-32 h-32 bg-paleta-azul/5 rounded-full transform translate-x-12 -translate-y-12 opacity-50"></div>
+<div class="relative">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center">
+<div class="w-14 h-14 rounded-2xl bg-paleta-azul shadow-lg flex items-center justify-center mr-5 transform group-hover:scale-105 transition-transform duration-300">
+<i class="fas fa-layer-group text-2xl text-white"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold paleta-azul-oscuro">Portafolio Activo</h3>
+<div class="flex items-center mt-1">
+<span class="w-2 h-2 rounded-full bg-paleta-azul mr-2"></span>
+<p class="text-xs paleta-azul-medio uppercase tracking-widest font-semibold">Base del Negocio</p>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-4xl font-extrabold paleta-azul">57.1%</p>
+<p class="text-sm paleta-azul-medio font-medium">Del mix total</p>
+</div>
+</div>
+<div class="flex items-end justify-between mt-4 pt-4 border-t border-gray-100">
+<div>
+<p class="text-3xl font-bold paleta-azul-oscuro">S/ 2.00MM</p>
+</div>
+<div class="flex space-x-4">
+<span class="text-xs font-medium paleta-azul-medio bg-paleta-azul/5 px-2 py-1 rounded"><i class="fas fa-sync paleta-azul mr-1"></i>Alta Rotación</span>
+<span class="text-xs font-medium paleta-azul-medio bg-paleta-azul/5 px-2 py-1 rounded"><i class="fas fa-shield-alt paleta-azul mr-1"></i>Flujo Estable</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Nuevos Productos -->
+<div class="legend-card bg-white p-6 rounded-xl shadow-glow-cyan border-l-8 border-paleta-turquesa relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-32 h-32 bg-paleta-turquesa/5 rounded-full transform translate-x-12 -translate-y-12 opacity-50"></div>
+<div class="relative">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center">
+<div class="w-14 h-14 rounded-2xl bg-paleta-turquesa shadow-lg flex items-center justify-center mr-5 transform group-hover:scale-105 transition-transform duration-300">
+<i class="fas fa-rocket text-2xl text-white"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold paleta-azul-oscuro">Nuevos Productos</h3>
+<div class="flex items-center mt-1">
+<span class="w-2 h-2 rounded-full bg-paleta-turquesa mr-2"></span>
+<p class="text-xs paleta-azul-medio uppercase tracking-widest font-semibold">Motor de Expansión</p>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-4xl font-extrabold paleta-turquesa">42.9%</p>
+<p class="text-sm paleta-azul-medio font-medium">Del mix total</p>
+</div>
+</div>
+<div class="flex items-end justify-between mt-4 pt-4 border-t border-gray-100">
+<div>
+<p class="text-3xl font-bold paleta-azul-oscuro">S/ 1.50MM</p>
+</div>
+<div class="flex space-x-4">
+<span class="text-xs font-medium paleta-azul-medio bg-paleta-turquesa/5 px-2 py-1 rounded"><i class="fas fa-chart-line paleta-turquesa mr-1"></i>Incremental</span>
+<span class="text-xs font-medium paleta-azul-medio bg-paleta-turquesa/5 px-2 py-1 rounded"><i class="fas fa-notes-medical paleta-turquesa mr-1"></i>Mix Terapéutico</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18 z-20">
+<p class="text-gray-400 text-xs font-medium">
+<i class="fas fa-lock mr-2 text-gray-300"></i>Confidencial | CSP LifeSciences – 2026
+            </p>
+<div class="flex items-center space-x-2">
+<span class="h-1.5 w-1.5 rounded-full bg-gray-300"></span>
+<p class="text-gray-400 text-xs font-bold">6</p>
+</div>
+</div>
+</div>
+<script>
+        const ctx = document.getElementById('mixChart').getContext('2d');
+        
+        // Usar colores de tu paleta
+        const colorActive = '#1764a1';   // Azul de tu paleta
+        const colorNew = '#13b8cb';      // Turquesa de tu paleta
+        
+        // Calcular porcentajes reales
+        const total = 3.5;
+        const activeValue = 2.0;
+        const newValue = 1.5;
+        const activePercent = Math.round((activeValue / total) * 100 * 10) / 10;
+        const newPercent = Math.round((newValue / total) * 100 * 10) / 10;
+        
+        // Actualizar displays de porcentajes
+        document.querySelector('.legend-card:first-child .text-4xl').textContent = `${activePercent.toFixed(1)}%`;
+        document.querySelector('.legend-card:last-child .text-4xl').textContent = `${newPercent.toFixed(1)}%`;
+        
+        // SOLUCIÓN: Crear un plugin personalizado para posicionar el tooltip
+        const externalTooltipHandler = {
+            id: 'externalTooltip',
+            afterDraw(chart) {
+                const tooltip = chart.tooltip;
+                if (!tooltip || !tooltip.getActiveElements().length) {
+                    return;
+                }
+                
+                // Mover el tooltip fuera del canvas
+                const {x, y} = tooltip.getActiveElements()[0].element;
+                const tooltipEl = chart.canvas.parentNode.querySelector('.chartjs-tooltip');
+                
+                if (!tooltipEl) {
+                    // Crear tooltip externo si no existe
+                    const tooltipEl = document.createElement('div');
+                    tooltipEl.className = 'chartjs-tooltip';
+                    tooltipEl.style.position = 'absolute';
+                    tooltipEl.style.pointerEvents = 'none';
+                    tooltipEl.style.zIndex = '1000';
+                    chart.canvas.parentNode.appendChild(tooltipEl);
+                }
+            }
+        };
+        
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Portafolio Activo', 'Nuevos Productos'],
+                datasets: [{
+                    data: [activeValue, newValue],
+                    backgroundColor: [colorActive, colorNew],
+                    hoverBackgroundColor: ['#14446e', '#20adb4'],
+                    borderWidth: 0,
+                    hoverOffset: 15,
+                    offset: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                radius: '90%',
+                layout: {
+                    padding: {
+                        top: 40,    // ESPACIO EXTRA ARRIBA para el tooltip
+                        bottom: 20,
+                        left: 20,
+                        right: 20
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(23, 100, 161, 0.95)',
+                        padding: 16,
+                        cornerRadius: 8,
+                        titleFont: { 
+                            family: 'Montserrat', 
+                            size: 14, 
+                            weight: 'bold' 
+                        },
+                        bodyFont: { 
+                            family: 'Roboto', 
+                            size: 14 
+                        },
+                        displayColors: true,
+                        boxWidth: 10,
+                        boxHeight: 10,
+                        usePointStyle: true,
+                        // POSICIONAR EL TOOLTIP MÁS ARRIBA - SOLUCIÓN SIMPLE
+                        xAlign: 'center',
+                        yAlign: 'top',  // Cambiado a 'top' para que aparezca arriba
+                        caretSize: 10,
+                        caretPadding: 15,
+                        position: 'nearest',
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    const value = context.parsed;
+                                    const percent = Math.round((value / total) * 100 * 10) / 10;
+                                    label += `S/ ${value.toFixed(2)}MM (${percent.toFixed(1)}%)`;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true,
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                // Aumentar la distancia de interacción
+                interaction: {
+                    intersect: false,
+                    mode: 'nearest',
+                    axis: 'xy'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

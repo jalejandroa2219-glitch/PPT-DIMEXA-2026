@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Riesgos y Mitigación</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+
+        /* Logo styling */
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Custom color classes for the palette */
+        .text-primary-blue { color: #1764a1; }
+        .text-secondary-blue { color: #13b8cb; }
+        .text-dark-blue { color: #12222e; }
+        .text-navy-blue { color: #14446e; }
+        .text-light-blue { color: #7194c6; }
+        .text-teal-blue { color: #20adb4; }
+        .text-aqua-blue { color: #1a9fb1; }
+        .text-lavender-blue { color: #6496d4; }
+        
+        .bg-primary-blue { background-color: #1764a1; }
+        .bg-secondary-blue { background-color: #13b8cb; }
+        .bg-dark-blue { background-color: #12222e; }
+        .bg-navy-blue { background-color: #14446e; }
+        .bg-light-blue { background-color: #7194c6; }
+        .bg-teal-blue { background-color: #20adb4; }
+        .bg-aqua-blue { background-color: #1a9fb1; }
+        .bg-lavender-blue { background-color: #6496d4; }
+
+        /* Custom Table Styling */
+        .risk-table-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #E5E7EB;
+        }
+        
+        .risk-row {
+            display: flex;
+            border-bottom: 1px solid #F3F4F6;
+            transition: background-color 0.2s;
+        }
+        .risk-row:last-child {
+            border-bottom: none;
+        }
+        .risk-row:hover {
+            background-color: #F9FAFB;
+        }
+
+        .risk-col {
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .col-risk {
+            width: 40%;
+            border-right: 1px solid #F3F4F6;
+        }
+        
+        .col-mitigation {
+            width: 60%;
+            position: relative;
+        }
+
+        .arrow-indicator {
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: #D1D5DB;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #E5E7EB;
+            z-index: 10;
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .icon-risk {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+        
+        .icon-mitigation {
+            background-color: rgba(23, 100, 161, 0.1);
+            color: #1764a1;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+    <!-- Header -->
+    <div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-200">
+        <div>
+            <h2 class="text-3xl font-bold text-dark-blue leading-tight">Riesgos controlados con cadencia mensual</h2>
+            <p class="text-navy-blue text-sm mt-1">Matriz de Riesgos y Mitigación | Gestión Proactiva</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <!-- Logo CSP LifeSciences -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+            </div>
+            <!-- Logo DIMEXA -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex px-16 py-10 bg-gray-50 flex-col items-center justify-center pl-22">
+        <!-- Table Header -->
+        <div class="w-full max-w-5xl flex mb-0 bg-primary-blue rounded-t-xl text-white overflow-hidden">
+            <div class="w-2/5 px-8 py-4 font-bold tracking-wide text-sm uppercase flex items-center">
+                <i class="fas fa-exclamation-triangle mr-3 text-light-blue"></i> Riesgo Potencial
+            </div>
+            <div class="w-3/5 px-8 py-4 font-bold tracking-wide text-sm uppercase flex items-center border-l border-[#14446e]">
+                <i class="fas fa-shield-alt mr-3 text-teal-blue"></i> Estrategia de Mitigación
+            </div>
+        </div>
+        
+        <!-- Table Body -->
+        <div class="w-full max-w-5xl bg-white risk-table-container rounded-t-none">
+            <!-- Row 1: Sobrestock -->
+            <div class="risk-row">
+                <div class="risk-col col-risk">
+                    <div class="icon-box icon-risk">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-dark-blue font-bold text-lg">Sobrestock</h4>
+                        <p class="text-sm text-navy-blue mt-1">Acumulación de días inventario &gt; 45 días.</p>
+                    </div>
+                </div>
+                <div class="risk-col col-mitigation">
+                    <div class="arrow-indicator"><i class="fas fa-chevron-right text-xs"></i></div>
+                    <div class="icon-box icon-mitigation">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-dark-blue font-bold text-lg">Control Mensual + Ajuste Sell-in</h4>
+                        <p class="text-sm text-navy-blue mt-1">Revisión S&amp;OP mensual. Frenar sell-in si ratio &gt; 1.25 hasta regularizar.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 2: Lanzamientos -->
+            <div class="risk-row">
+                <div class="risk-col col-risk">
+                    <div class="icon-box icon-risk">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-dark-blue font-bold text-lg">Lanzamientos sin Rotación</h4>
+                        <p class="text-sm text-navy-blue mt-1">Nuevos productos estancados en canal.</p>
+                    </div>
+                </div>
+                <div class="risk-col col-mitigation">
+                    <div class="arrow-indicator"><i class="fas fa-chevron-right text-xs"></i></div>
+                    <div class="icon-box icon-mitigation">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-dark-blue font-bold text-lg">Activación Sell-out (Farmacia Horizontal)</h4>
+                        <p class="text-sm text-navy-blue mt-1">Foco comercial en generación de demanda. Promoción dirigida.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 3: Presión Financiera -->
+            <div class="risk-row">
+                <div class="risk-col col-risk">
+                    <div class="icon-box icon-risk">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-dark-blue font-bold text-lg">Presión Financiera</h4>
+                        <p class="text-sm text-navy-blue mt-1">Impacto en flujo de caja por mix de bajo margen.</p>
+                    </div>
+                </div>
+                <div class="risk-col col-mitigation">
+                    <div class="arrow-indicator"><i class="fas fa-chevron-right text-xs"></i></div>
+                    <div class="icon-box icon-mitigation">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-dark-blue font-bold text-lg">Inventario Disciplinado + Mix Saludable</h4>
+                        <p class="text-sm text-navy-blue mt-1">Priorizar sell-in de Top 5 SKUs (Core) y Nuevos de alto valor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Insight Box -->
+        <div class="mt-8 w-full max-w-5xl flex justify-center">
+            <div class="bg-light-blue/20 border border-teal-blue/30 rounded-lg px-6 py-3 flex items-center">
+                <i class="fas fa-info-circle text-primary-blue mr-3 text-lg"></i>
+                <p class="text-dark-blue text-sm font-medium">
+                    El sistema de control no elimina el riesgo, pero asegura una 
+                    <span class="font-bold text-primary-blue">respuesta inmediata</span> 
+                    antes de que afecte el P&amp;L.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18">
+        <p class="text-gray-400 text-xs font-light">
+            <i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – 2026
+        </p>
+        <p class="text-gray-400 text-xs font-light">11</p>
+    </div>
+</div>
+</body>
+</html>

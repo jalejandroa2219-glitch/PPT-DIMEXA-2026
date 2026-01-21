@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventario sano = crecimiento sostenible</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-blue { color: #1E3A8A; }
+        .bg-brand-blue { background-color: #1E3A8A; }
+        
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+
+        /* Logo styling */
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .kpi-row {
+            border-bottom: 1px solid #E5E7EB;
+            transition: background-color 0.2s;
+        }
+        .kpi-row:last-child {
+            border-bottom: none;
+        }
+        .kpi-row:hover {
+            background-color: #F9FAFB;
+        }
+        
+        .traffic-light-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F3F4F6;
+            border-radius: 20px;
+            padding: 8px 12px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .light {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #D1D5DB;
+            margin: 0 4px;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .light.active-green {
+            background-color: #10B981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+        }
+        .light.active-yellow {
+            background-color: #F59E0B;
+        }
+        .light.active-red {
+            background-color: #EF4444;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+    <!-- Header -->
+    <div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-200">
+        <div>
+            <h2 class="text-3xl font-bold brand-blue leading-tight">Inventario sano = crecimiento sostenible</h2>
+            <p class="text-gray-500 text-sm mt-1">Política de Inventarios | Tablero de Control y KPIs</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <!-- Logo CSP LifeSciences -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+            </div>
+            <!-- Logo DIMEXA -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex px-16 py-8 bg-gray-50 items-center justify-center flex-col relative pl-22">
+        <!-- Table Container -->
+        <div class="w-full max-w-5xl bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden z-10">
+            <!-- Table Header -->
+            <div class="bg-brand-blue px-8 py-4 flex justify-between items-center">
+                <h3 class="text-white text-lg font-semibold tracking-wide">Métricas Clave de Gestión (KPIs)</h3>
+                <div class="flex items-center space-x-2">
+                    <span class="text-blue-200 text-xs uppercase font-bold">Estado Actual:</span>
+                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded font-bold">EN RANGO</span>
+                </div>
+            </div>
+            
+            <!-- Rows -->
+            <div class="flex flex-col">
+                <!-- Row 1: Días Inventario -->
+                <div class="kpi-row flex items-center p-6">
+                    <div class="w-1/12 flex justify-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue">
+                            <i class="fas fa-boxes text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="w-4/12 pl-4">
+                        <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Indicador de Cobertura</p>
+                        <h4 class="text-xl font-bold text-gray-800">Días de Inventario</h4>
+                        <p class="text-sm text-gray-500 mt-1">Nivel óptimo para asegurar rotación sin quiebres.</p>
+                    </div>
+                    <div class="w-3/12 text-center border-l border-gray-100">
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-2">Objetivo (Target)</p>
+                        <p class="text-3xl font-bold brand-blue">30 – 45 <span class="text-lg font-normal text-gray-400">Días</span></p>
+                    </div>
+                    <div class="w-4/12 flex flex-col items-center justify-center border-l border-gray-100">
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-2">Semáforo de Control</p>
+                        <div class="traffic-light-container">
+                            <div class="light"></div>
+                            <div class="light"></div>
+                            <div class="light active-green"></div>
+                        </div>
+                        <p class="text-xs text-green-600 font-bold mt-2"><i class="fas fa-check-circle mr-1"></i>Óptimo</p>
+                    </div>
+                </div>
+                
+                <!-- Row 2: Sell In / Sell Out -->
+                <div class="kpi-row flex items-center p-6">
+                    <div class="w-1/12 flex justify-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="w-4/12 pl-4">
+                        <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Sostenibilidad</p>
+                        <h4 class="text-xl font-bold text-gray-800">Ratio Sell In / Sell Out</h4>
+                        <p class="text-sm text-gray-500 mt-1">Relación de abastecimiento vs demanda real.</p>
+                    </div>
+                    <div class="w-3/12 text-center border-l border-gray-100">
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-2">Objetivo (Target)</p>
+                        <p class="text-3xl font-bold brand-blue">&gt; 1.15 <span class="text-lg font-normal text-gray-400">x</span></p>
+                    </div>
+                    <div class="w-4/12 flex flex-col items-center justify-center border-l border-gray-100">
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-2">Semáforo de Control</p>
+                        <div class="traffic-light-container">
+                            <div class="light"></div>
+                            <div class="light"></div>
+                            <div class="light active-green"></div>
+                        </div>
+                        <p class="text-xs text-green-600 font-bold mt-2"><i class="fas fa-check-circle mr-1"></i>Saludable</p>
+                    </div>
+                </div>
+                
+                <!-- Row 3: Revisión -->
+                <div class="kpi-row flex items-center p-6">
+                    <div class="w-1/12 flex justify-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue">
+                            <i class="fas fa-calendar-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="w-4/12 pl-4">
+                        <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Gobernanza</p>
+                        <h4 class="text-xl font-bold text-gray-800">Cadencia de Revisión</h4>
+                        <p class="text-sm text-gray-500 mt-1">Comité S&amp;OP (Comercial + Supply + Finanzas).</p>
+                    </div>
+                    <div class="w-3/12 text-center border-l border-gray-100">
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-2">Frecuencia</p>
+                        <p class="text-2xl font-bold brand-blue">Mensual</p>
+                    </div>
+                    <div class="w-4/12 flex flex-col items-center justify-center border-l border-gray-100">
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-2">Validación</p>
+                        <div class="bg-blue-100 text-brand-blue px-4 py-2 rounded-full font-bold text-sm shadow-sm">
+                            <i class="fas fa-users mr-2"></i>Comité Ejecutivo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Insight -->
+        <div class="mt-8 text-center max-w-3xl">
+            <p class="text-gray-500 text-sm italic">
+                <i class="fas fa-quote-left text-gray-300 mr-2"></i>
+                "La política no es solo teoría: es un tablero de control mensual que permite tomar decisiones rápidas ante cualquier desviación del inventario objetivo."
+            </p>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18">
+        <p class="text-gray-400 text-xs font-light">
+            <i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – 2026
+        </p>
+        <p class="text-gray-400 text-xs font-light">8</p>
+    </div>
+</div>
+</body>
+</html>

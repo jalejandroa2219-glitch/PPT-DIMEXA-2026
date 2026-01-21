@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cobertura Real – DIMEXA 2026</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+
+        /* Logo styling */
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        /* Custom color classes for the palette */
+        .text-primary-blue { color: #1764a1; }
+        .text-secondary-blue { color: #13b8cb; }
+        .text-dark-blue { color: #12222e; }
+        .text-navy-blue { color: #14446e; }
+        .text-light-blue { color: #7194c6; }
+        .text-teal-blue { color: #20adb4; }
+        .text-aqua-blue { color: #1a9fb1; }
+        .text-lavender-blue { color: #6496d4; }
+        
+        .bg-primary-blue { background-color: #1764a1; }
+        .bg-secondary-blue { background-color: #13b8cb; }
+        .bg-dark-blue { background-color: #12222e; }
+        .bg-navy-blue { background-color: #14446e; }
+        .bg-light-blue { background-color: #7194c6; }
+        .bg-teal-blue { background-color: #20adb4; }
+        .bg-aqua-blue { background-color: #1a9fb1; }
+        .bg-lavender-blue { background-color: #6496d4; }
+        
+        /* Layout optimizado - DISTRIBUCIÓN MEJORADA */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 12px 22px; /* Reducido ligeramente */
+            overflow: hidden;
+        }
+        
+        .content-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 40% 57%; /* CAMBIADO: 40% superior, 57% inferior */
+            gap: 10px;
+            overflow: hidden;
+        }
+        
+        .top-row {
+            grid-row: 1;
+            display: contents;
+        }
+        
+        .bottom-row {
+            grid-row: 2;
+            grid-column: 1 / -1;
+            display: flex; /* Cambiado a flex para mejor control */
+            gap: 10px;
+            margin-top: 0;
+            height: 100%; /* Toma el 57% asignado */
+        }
+        
+        /* Metric Cards ajustadas - MÁS COMPACTAS para las superiores */
+        .metric-card {
+            background: white;
+            border-radius: 8px;
+            padding: 8px; /* REDUCIDO AÚN MÁS para cajas superiores */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            border-left: 4px solid #1764a1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* Cajas inferiores - MÁS ALTAS con más padding */
+        .bottom-row .metric-card {
+            padding: 15px; /* MÁS padding para cajas inferiores */
+            flex: 1; /* Ocupan espacio proporcional */
+        }
+        
+        .col-wide {
+            flex: 2; /* La caja ancha ocupa más espacio */
+        }
+        
+        .col-narrow {
+            flex: 1; /* La caja estrecha ocupa menos */
+        }
+        
+        .metric-value {
+            font-size: 1.7rem; /* REDUCIDO para cajas superiores */
+            font-weight: 800;
+            color: #1764a1;
+            line-height: 1;
+            margin: 3px 0; /* REDUCIDO */
+        }
+        
+        /* Valores más grandes para cajas inferiores */
+        .bottom-row .metric-value {
+            font-size: 2rem; /* MÁS grande para cajas inferiores */
+        }
+        
+        .metric-label {
+            font-size: 0.65rem; /* REDUCIDO */
+            color: #6b7280;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3px; /* REDUCIDO */
+            margin-top: 5px; /* REDUCIDO */
+        }
+        
+        .stat-item {
+            background: #f8fafc;
+            padding: 3px; /* REDUCIDO */
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 0.85rem; /* REDUCIDO */
+            font-weight: 800;
+            color: #1764a1;
+        }
+        
+        .stat-label {
+            font-size: 0.55rem; /* REDUCIDO */
+            color: #6b7280;
+            margin-top: 1px;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background-color: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 3px; /* REDUCIDO */
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 2px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #1764a1 0%, #13b8cb 100%);
+            color: white;
+            padding: 4px; /* REDUCIDO */
+            border-radius: 4px;
+            margin-top: 4px; /* REDUCIDO */
+            font-size: 0.65rem; /* REDUCIDO */
+        }
+        
+        .alert-box {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 4px; /* REDUCIDO */
+            border-radius: 4px;
+            margin-top: 4px; /* REDUCIDO */
+            font-size: 0.65rem; /* REDUCIDO */
+        }
+        
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3px; /* REDUCIDO */
+            margin-top: 5px; /* REDUCIDO */
+        }
+        
+        .goal-item {
+            background: #f0f9ff;
+            padding: 4px; /* REDUCIDO */
+            border-radius: 4px;
+            border-left: 3px solid #1764a1;
+        }
+        
+        .goal-value {
+            font-size: 0.9rem; /* REDUCIDO */
+            font-weight: 800;
+            color: #1764a1;
+        }
+        
+        .strategy-card {
+            background: #f8fafc;
+            padding: 12px; /* BUEN tamaño para cajas inferiores */
+            border-radius: 6px;
+            margin-bottom: 8px; /* BUEN margen */
+            border-left: 3px solid #20adb4;
+            height: calc(100% - 20px); /* Ajuste de altura */
+        }
+        
+        .strategy-title {
+            font-weight: 700;
+            color: #1764a1;
+            margin-bottom: 6px; /* BUEN margen */
+            font-size: 0.9rem; /* Tamaño legible */
+        }
+        
+        .kpi-tracker {
+            display: flex;
+            align-items: center;
+            margin: 6px 0; /* BUEN margen */
+        }
+        
+        .kpi-label {
+            width: 95px; /* Ligeramente más ancho */
+            font-size: 0.75rem; /* Tamaño legible */
+            color: #4b5563;
+        }
+        
+        .kpi-bar {
+            flex: 1;
+            height: 16px; /* BUEN tamaño */
+            background-color: #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 8px;
+            position: relative;
+        }
+        
+        .kpi-current {
+            height: 100%;
+            background-color: #1764a1;
+            border-radius: 8px;
+        }
+        
+        .kpi-target {
+            height: 100%;
+            background-color: #20adb4;
+            border-radius: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.7;
+        }
+        
+        .kpi-value {
+            width: 65px; /* Ligeramente más ancho */
+            font-size: 0.75rem; /* Tamaño legible */
+            font-weight: 700;
+            text-align: right;
+        }
+        
+        .calculation-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            padding: 12px; /* BUEN padding */
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            margin-top: 10px; /* BUEN margen */
+        }
+        
+        /* Column widths para cajas superiores */
+        .col-1 { grid-column: span 4; }
+        .col-2 { grid-column: span 4; }
+        .col-3 { grid-column: span 4; }
+        
+        /* Footer */
+        .footer {
+            height: 38px; /* Reducido ligeramente */
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 22px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+    <!-- Header - Compacto -->
+    <div class="w-full h-18 bg-white flex items-center justify-between px-7 pl-14 border-b border-gray-200">
+        <div>
+            <h2 class="text-lg font-bold text-dark-blue leading-tight">Cobertura Real vs Potencial 2026</h2>
+            <p class="text-navy-blue text-xs mt-0.5">Análisis de Desempeño & Plan de Acción</p>
+        </div>
+        <div class="flex items-center space-x-3">
+            <!-- Logo CSP LifeSciences -->
+            <div class="h-6 w-18 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+            </div>
+            <!-- Logo DIMEXA -->
+            <div class="h-6 w-18 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content - DISTRIBUCIÓN OPTIMIZADA -->
+    <div class="main-content pl-18">
+        <div class="content-grid">
+            <!-- Columna 1: Cobertura Real 2025 - MUY COMPACTA -->
+            <div class="col-1">
+                <div class="metric-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="metric-label">Cobertura Real 2025</div>
+                            <div class="metric-value">1,091</div>
+                            <div class="text-gray-500 text-xs">Clientes atendidos anual</div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-primary-blue/10 flex items-center justify-center">
+                            <i class="fas fa-users text-primary-blue text-xs"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="coverage-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">136</div>
+                            <div class="stat-label">Prom. x Vendedor</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">338</div>
+                            <div class="stat-label">Mejor Mes (Agosto)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">121</div>
+                            <div class="stat-label">Mensual Prom.</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">204</div>
+                            <div class="stat-label">Top Vendedor</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-0.5">
+                        <div class="flex justify-between text-xs text-gray-600 mb-0.5">
+                            <span>Penetración vs Cartera</span>
+                            <span class="font-bold">6.8%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill bg-primary-blue" style="width: 6.8%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-0.5">
+                        <div class="flex justify-between text-xs text-gray-600 mb-0.5">
+                            <span>Rotación Anual</span>
+                            <span class="font-bold text-teal-blue">164%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill bg-teal-blue" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna 2: Análisis de Brecha - MUY COMPACTA -->
+            <div class="col-2">
+                <div class="metric-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="metric-label">Análisis de Brecha</div>
+                            <div class="text-xs font-bold text-dark-blue mt-0.5">Potencial vs Realidad</div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-secondary-blue/10 flex items-center justify-center">
+                            <i class="fas fa-chart-gantt text-secondary-blue text-xs"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-1 space-y-1">
+                        <div>
+                            <div class="flex justify-between text-xs mb-0.5">
+                                <span class="text-gray-600">Cartera DIMEXA</span>
+                                <span class="font-bold text-primary-blue">16,066</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-primary-blue" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between text-xs mb-0.5">
+                                <span class="text-gray-600">Cobertura Real 2025</span>
+                                <span class="font-bold text-teal-blue">1,091</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-teal-blue" style="width: 6.8%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between text-xs mb-0.5">
+                                <span class="text-gray-600">Brecha de Cobertura</span>
+                                <span class="font-bold text-red-600">14,975</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-red-500" style="width: 93.2%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-box">
+                        <div class="flex items-start">
+                            <i class="fas fa-exclamation-triangle mt-0.5 mr-1 text-xs"></i>
+                            <div>
+                                <p class="font-medium text-xs">
+                                    <span class="font-bold">OPORTUNIDAD CRÍTICA:</span> 
+                                    93.2% sin cobertura
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-1 mt-0.5">
+                        <div class="text-center p-1 bg-red-50 rounded">
+                            <div class="text-xs font-bold text-red-700">93.2%</div>
+                            <div class="text-xs text-gray-600">Sin Cobertura</div>
+                        </div>
+                        <div class="text-center p-1 bg-primary-blue/10 rounded">
+                            <div class="text-xs font-bold text-primary-blue">6.8%</div>
+                            <div class="text-xs text-gray-600">Penetración</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna 3: Meta Cobertura 2026 - MUY COMPACTA -->
+            <div class="col-3">
+                <div class="metric-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="metric-label">Meta Cobertura 2026</div>
+                            <div class="metric-value">1,350</div>
+                            <div class="text-gray-500 text-xs">Objetivo clientes atendidos</div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-teal-blue/10 flex items-center justify-center">
+                            <i class="fas fa-bullseye text-teal-blue text-xs"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-grid">
+                        <div class="goal-item">
+                            <div class="goal-value">+259</div>
+                            <div class="text-xs text-gray-600">Clientes Nuevos</div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-value">8.4%</div>
+                            <div class="text-xs text-gray-600">Penetración Cartera</div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-value">150</div>
+                            <div class="text-xs text-gray-600">Prom. x Vendedor</div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-value">S/ 2,600</div>
+                            <div class="text-xs text-gray-600">Ticket Promedio</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-0.5">
+                        <div class="flex justify-between text-xs text-gray-600 mb-0.5">
+                            <span>Progreso hacia Meta</span>
+                            <span class="font-bold">81%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill bg-teal-blue" style="width: 81%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box mt-0.5">
+                        <div class="text-xs font-medium">
+                            <span class="font-bold">Incremento:</span> +24% vs 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila inferior: Dos cajas MÁS ALTAS -->
+            <div class="bottom-row">
+                <!-- Caja izquierda ancha - MÁS ALTA -->
+                <div class="metric-card col-wide">
+                    <h3 class="text-base font-bold text-dark-blue mb-3">
+                        <i class="fas fa-route mr-2 text-primary-blue"></i>
+                        Plan de Acción para Alcanzar S/ 3.5MM
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 h-full" style="height: calc(100% - 50px);">
+                        <div class="strategy-card">
+                            <div class="strategy-title">1. Optimización de Frecuencia</div>
+                            <p class="text-xs text-gray-600 mb-2">Incrementar visitas a clientes clave:</p>
+                            <ul class="text-xs text-gray-600 space-y-1">
+                                <li>• Clientes A: 12 visitas/año (actual: 8)</li>
+                                <li>• Clientes B: 8 visitas/año (actual: 4)</li>
+                                <li>• Clientes C: 4 visitas/año (actual: 2)</li>
+                            </ul>
+                            <p class="text-primary-blue font-medium mt-2 text-xs">Impacto: +15% ventas base</p>
+                        </div>
+                        
+                        <div class="strategy-card">
+                            <div class="strategy-title">2. Expansión Controlada</div>
+                            <p class="text-xs text-gray-600 mb-2">Nuevos clientes priorizados:</p>
+                            <ul class="text-xs text-gray-600 space-y-1">
+                                <li>• Lima: +120 clientes (38% mercado)</li>
+                                <li>• Top 5 departamentos: +100 clientes</li>
+                                <li>• Resto Perú: +39 clientes</li>
+                            </ul>
+                            <p class="text-teal-blue font-medium mt-2 text-xs">Total: +259 clientes nuevos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="calculation-box">
+                        <div class="flex items-center">
+                            <i class="fas fa-calculator text-primary-blue text-sm mr-3"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-primary-blue">
+                                    <span class="font-bold">Cálculo Objetivo S/ 3.5MM:</span>
+                                </p>
+                                <div class="flex items-center justify-between mt-2 text-xs">
+                                    <div class="text-center">
+                                        <p class="font-bold text-dark-blue">1,350</p>
+                                        <p class="text-gray-600">Clientes</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="font-bold text-dark-blue">×</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="font-bold text-dark-blue">S/ 2,600</p>
+                                        <p class="text-gray-600">Ticket Promedio</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="font-bold text-dark-blue">=</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="font-bold text-primary-blue">S/ 3.51MM</p>
+                                        <p class="text-gray-600">Ventas 2026</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Caja derecha estrecha - MÁS ALTA -->
+                <div class="metric-card col-narrow">
+                    <h3 class="text-base font-bold text-dark-blue mb-3">
+                        <i class="fas fa-tachometer-alt mr-2 text-primary-blue"></i>
+                        Indicadores Clave 2026
+                    </h3>
+                    
+                    <div class="space-y-2" style="height: calc(100% - 60px);">
+                        <div class="kpi-tracker">
+                            <div class="kpi-label">Penetración</div>
+                            <div class="kpi-bar">
+                                <div class="kpi-current" style="width: 6.8%"></div>
+                                <div class="kpi-target" style="width: 8.4%"></div>
+                            </div>
+                            <div class="kpi-value">6.8→8.4%</div>
+                        </div>
+                        
+                        <div class="kpi-tracker">
+                            <div class="kpi-label">Clientes</div>
+                            <div class="kpi-bar">
+                                <div class="kpi-current" style="width: 81%"></div>
+                            </div>
+                            <div class="kpi-value">1,091→1,350</div>
+                        </div>
+                        
+                        <div class="kpi-tracker">
+                            <div class="kpi-label">Ticket</div>
+                            <div class="kpi-bar">
+                                <div class="kpi-current" style="width: 94%"></div>
+                            </div>
+                            <div class="kpi-value">S/ 2,450→2,600</div>
+                        </div>
+                        
+                        <div class="kpi-tracker">
+                            <div class="kpi-label">Eficiencia</div>
+                            <div class="kpi-bar">
+                                <div class="kpi-current" style="width: 91%"></div>
+                            </div>
+                            <div class="kpi-value">136→150</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 p-2 bg-gray-50 rounded">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-dark-blue">Impacto Estimado</p>
+                                <p class="text-xs text-gray-600">Ventas nuevas</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-primary-blue">S/ 673K</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - Compacto -->
+    <div class="footer pl-14">
+        <p class="text-gray-400 text-xs font-light">
+            <i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – 2026
+        </p>
+        <p class="text-gray-400 text-xs font-light">15</p>
+    </div>
+</div>
+
+<script>
+    // Animación de barras de progreso
+    document.addEventListener('DOMContentLoaded', function() {
+        const progressBars = document.querySelectorAll('.progress-fill, .kpi-current, .kpi-target');
+        
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 400);
+        });
+    });
+</script>
+</body>
+</html>

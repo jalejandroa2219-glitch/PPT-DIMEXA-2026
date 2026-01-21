@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Innovación 2026: crecimiento incremental por categoría</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        
+        /* Línea izquierda con degradado */
+        .left-border-gradient {
+            background: linear-gradient(to bottom, 
+                #1764a1 0%,
+                #14446e 25%,
+                #20adb4 50%,
+                #13b8cb 75%,
+                #6496d4 100%
+            );
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            z-index: 20;
+        }
+
+        /* Logo styling */
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(23, 100, 161, 0.1);
+            color: #1764a1;
+            margin-right: 12px;
+        }
+        
+        /* Custom color classes for the palette */
+        .text-primary-blue { color: #1764a1; }
+        .text-secondary-blue { color: #13b8cb; }
+        .text-dark-blue { color: #12222e; }
+        .text-navy-blue { color: #14446e; }
+        .text-light-blue { color: #7194c6; }
+        .text-teal-blue { color: #20adb4; }
+        .text-aqua-blue { color: #1a9fb1; }
+        .text-lavender-blue { color: #6496d4; }
+        
+        .bg-primary-blue { background-color: #1764a1; }
+        .bg-secondary-blue { background-color: #13b8cb; }
+        .bg-dark-blue { background-color: #12222e; }
+        .bg-navy-blue { background-color: #14446e; }
+        .bg-light-blue { background-color: #7194c6; }
+        .bg-teal-blue { background-color: #20adb4; }
+        .bg-aqua-blue { background-color: #1a9fb1; }
+        .bg-lavender-blue { background-color: #6496d4; }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <!-- Línea izquierda con degradado de colores -->
+    <div class="left-border-gradient"></div>
+
+    <!-- Header -->
+    <div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-200">
+        <div>
+            <h2 class="text-3xl font-bold text-dark-blue leading-tight">Innovación 2026: crecimiento incremental por categoría</h2>
+            <p class="text-navy-blue text-sm mt-1">Nuevos Productos | Expansión Terapéutica | Target: S/ 3.80MM</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <!-- Logo CSP LifeSciences -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+            </div>
+            <!-- Logo DIMEXA -->
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex px-16 py-10 bg-gray-50 items-center pl-22">
+        <!-- Left Column: Chart -->
+        <div class="w-8/12 h-full pr-8 flex flex-col">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 h-full flex flex-col relative">
+                <h3 class="text-lg font-bold text-dark-blue mb-2 border-l-4 border-primary-blue pl-3">Proyección de Ventas por Línea (Nuevos Lanzamientos)</h3>
+                <div class="flex-1 w-full relative">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Context & Summary -->
+        <div class="w-4/12 h-full pl-4 flex flex-col justify-between">
+            <!-- Total Target Box -->
+            <div class="bg-primary-blue text-white p-6 rounded-xl shadow-md mb-6 relative overflow-hidden">
+                <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4">
+                    <i class="fas fa-bullseye text-9xl"></i>
+                </div>
+                <p class="text-light-blue text-xs uppercase font-bold tracking-wider mb-2">Meta Nuevos Productos</p>
+                <h3 class="text-4xl font-bold mb-1">S/ 3.80MM</h3>
+                <p class="text-sm text-lavender-blue font-light">Contribución del 38.7% al plan total</p>
+            </div>
+            
+            <!-- Insights List -->
+            <div class="flex-1 bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex flex-col justify-center">
+                <h4 class="text-dark-blue font-bold mb-4 text-sm uppercase tracking-wide border-b border-gray-100 pb-2">Top Categorías (Drivers)</h4>
+                <div class="space-y-5">
+                    <div class="flex items-start">
+                        <div class="category-icon flex-shrink-0">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-dark-blue">Neurología (35%)</p>
+                            <p class="text-xs text-navy-blue mt-0.5">Alto valor unitario. Foco en Lexpram y Neurilax.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="category-icon flex-shrink-0">
+                            <i class="fas fa-bacteria"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-dark-blue">Antibióticos (21%)</p>
+                            <p class="text-xs text-navy-blue mt-0.5">Volumen estratégico. Klarithrom y Levotoplex.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="category-icon flex-shrink-0">
+                            <i class="fas fa-procedures"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-dark-blue">Urología (15%)</p>
+                            <p class="text-xs text-navy-blue mt-0.5">Complemento al core. Sildezone y Tadalazone.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quote/Bottom line -->
+            <div class="mt-6">
+                <p class="text-xs text-navy-blue italic text-center">
+                    "La innovación en Neuro y Antibióticos aporta más del 50% del crecimiento de nuevos productos."
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18">
+        <p class="text-gray-400 text-xs font-light">
+            <i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – 2026
+        </p>
+        <p class="text-gray-400 text-xs font-light">10</p>
+    </div>
+</div>
+
+<script>
+        const ctx = document.getElementById('categoryChart').getContext('2d');
+        
+        // Real Data from Forecast 2026
+        const labels = ['Neurología', 'Antibióticos', 'Urología', 'Otros', 'OTC Especializados', 'Gastroenterología'];
+        const dataValues = [1.33, 0.81, 0.59, 0.42, 0.40, 0.26];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Proyección 2026 (Millones S/)',
+                data: dataValues,
+                backgroundColor: [
+                    '#1764a1', // Primary Blue (Top 1 - Neurología)
+                    '#13b8cb', // Secondary Blue (Top 2 - Antibióticos)
+                    '#20adb4', // Teal Blue (Top 3 - Urología)
+                    '#6496d4', // Lavender Blue (Top 4 - Otros)
+                    '#7194c6', // Light Blue (Top 5 - OTC Especializados)
+                    '#1a9fb1'  // Aqua Blue (Top 6 - Gastroenterología)
+                ],
+                borderRadius: 4,
+                barPercentage: 0.6,
+                categoryPercentage: 0.8
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                indexAxis: 'y', // Horizontal Bar Chart
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: { right: 50, left: 10, top: 20, bottom: 10 }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 1.5, // Accommodate max value 1.33
+                        grid: {
+                            color: '#F3F4F6',
+                            borderDash: [5, 5]
+                        },
+                        title: {
+                            display: true,
+                            text: 'Millones de Soles (S/)',
+                            font: { family: 'Roboto', size: 12 },
+                            color: '#14446e' // Navy blue
+                        },
+                        ticks: {
+                            font: { family: 'Roboto', size: 11 },
+                            color: '#1764a1', // Primary blue
+                            callback: function(value) { return 'S/ ' + value.toFixed(1) + 'M'; }
+                        }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: {
+                            font: { family: 'Montserrat', size: 12, weight: '600' },
+                            color: '#12222e', // Dark blue
+                            mirror: false // Labels outside
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(23, 100, 161, 0.95)', // Primary blue with opacity
+                        padding: 10,
+                        titleFont: { family: 'Montserrat', size: 13 },
+                        bodyFont: { family: 'Roboto', size: 12 },
+                        callbacks: {
+                            label: function(context) {
+                                return 'Forecast: S/ ' + context.parsed.x.toFixed(2) + 'MM';
+                            }
+                        }
+                    }
+                }
+            },
+            plugins: [{
+                id: 'barValues',
+                afterDatasetsDraw(chart, args, options) {
+                    const { ctx } = chart;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            ctx.fillStyle = '#12222e'; // Dark blue for text
+                            ctx.font = 'bold 13px Roboto';
+                            ctx.textAlign = 'left';
+                            ctx.textBaseline = 'middle';
+                            // Position label to the right of the bar
+                            ctx.fillText('S/ ' + value.toFixed(2) + 'MM', bar.x + 8, bar.y);
+                        });
+                    });
+                }
+            }]
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>

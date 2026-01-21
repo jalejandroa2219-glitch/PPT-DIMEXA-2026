@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Productos en Proceso de Registro</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+    }
+    .slide-container {
+        width: 1280px;
+        height: 720px;
+        background-color: #ffffff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+    .left-border-gradient {
+        background: linear-gradient(to bottom, 
+            #1764a1 0%,
+            #14446e 25%,
+            #20adb4 50%,
+            #13b8cb 75%,
+            #6496d4 100%
+        );
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 6px;
+        z-index: 20;
+    }
+
+    .logo-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    .text-primary-blue { color: #1764a1; }
+    .text-secondary-blue { color: #13b8cb; }
+    .text-dark-blue { color: #12222e; }
+    .text-navy-blue { color: #14446e; }
+    .text-light-blue { color: #7194c6; }
+    .text-teal-blue { color: #20adb4; }
+    .text-aqua-blue { color: #1a9fb1; }
+    .text-lavender-blue { color: #6496d4; }
+    
+    .bg-primary-blue { background-color: #1764a1; }
+    .bg-secondary-blue { background-color: #13b8cb; }
+    .bg-dark-blue { background-color: #12222e; }
+    .bg-navy-blue { background-color: #14446e; }
+    .bg-light-blue { background-color: #7194c6; }
+    .bg-teal-blue { background-color: #20adb4; }
+    .bg-aqua-blue { background-color: #1a9fb1; }
+    .bg-lavender-blue { background-color: #6496d4; }
+
+    .custom-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+        background: #F3F4F6;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+        background-color: #CBD5E1;
+        border-radius: 3px;
+    }
+
+    .product-card {
+        font-size: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 10px;
+        background: white;
+        border-radius: 6px;
+        border: 1px solid #E5E7EB;
+        margin-bottom: 6px;
+    }
+    
+    .dosage-icon {
+        font-size: 10px;
+        margin-right: 4px;
+        color: #13b8cb;
+    }
+    
+    .brand-name {
+        font-weight: 700;
+        color: #14446e;
+        min-width: 120px;
+    }
+    
+    .product-name {
+        font-size: 0.7rem;
+        color: #666;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+        margin: 0 10px;
+    }
+    
+    .dci-info {
+        font-size: 0.7rem;
+        color: #1764a1;
+        min-width: 150px;
+        margin: 0 10px;
+    }
+    
+    .dosage-badge {
+        font-size: 0.65rem;
+        padding: 1px 4px;
+        border-radius: 8px;
+        background-color: #f0f9ff;
+        color: #1764a1;
+        border: 1px solid #e0f2fe;
+        min-width: 80px;
+        text-align: center;
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-radius: 8px;
+        padding: 12px;
+        border: 1px solid #bae6fd;
+    }
+    
+    .category-header {
+        background-color: #f8fafc;
+        padding: 8px 12px;
+        margin: 8px 0 4px 0;
+        border-radius: 6px;
+        border-left: 4px solid #13b8cb;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container shadow-2xl relative">
+    <div class="left-border-gradient"></div>
+
+    <!-- Header -->
+    <div class="w-full h-24 bg-white flex items-center justify-between px-12 pl-18 border-b border-gray-200 flex-shrink-0">
+        <div>
+            <h2 class="text-3xl font-bold text-dark-blue leading-tight">Productos en Proceso de Registro</h2>
+            <p class="text-navy-blue text-sm mt-1">Pipeline Completo - 41 SKUs | Estado de Registros Sanitarios</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo CSP LifeSciences" class="logo-img" src="https://i.imgur.com/bqX33ZT.png"/>
+            </div>
+            <div class="h-8 w-24 bg-gray-100 border border-gray-300 flex items-center justify-center rounded">
+                <img alt="Logo DIMEXA" class="logo-img" src="https://i.imgur.com/cqdyNDQ.png"/>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex px-12 py-6 overflow-hidden bg-gray-50 gap-6 pl-20">
+        <!-- Left Column: Stats & Categories -->
+        <div class="w-4/12 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden">
+            <div class="bg-amber-50 px-6 py-4 border-b border-amber-200 flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-bold text-amber-800"><i class="fas fa-chart-pie mr-2"></i>Resumen por Categoría</h3>
+                    <p class="text-xs text-amber-600">41 SKUs en proceso de registro</p>
+                </div>
+                <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">ANÁLISIS</span>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scroll flex-1">
+                
+                <!-- Cápsulas -->
+                <div class="mb-6">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-capsules text-primary-blue mr-2"></i>
+                        <h4 class="text-sm font-bold text-dark-blue">Cápsulas</h4>
+                        <span class="ml-2 bg-blue-100 text-primary-blue text-xs px-2 py-1 rounded-full font-bold">10</span>
+                    </div>
+                    <div class="space-y-2 pl-5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Cápsulas Blandas</span>
+                            <span class="font-bold text-dark-blue">6</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Cápsulas Simples</span>
+                            <span class="font-bold text-dark-blue">4</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tabletas/Comprimidos -->
+                <div class="mb-6">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-tablets text-amber-600 mr-2"></i>
+                        <h4 class="text-sm font-bold text-dark-blue">Tabletas/Comprimidos</h4>
+                        <span class="ml-2 bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full font-bold">16</span>
+                    </div>
+                    <div class="space-y-2 pl-5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Tabletas Recubiertas</span>
+                            <span class="font-bold text-dark-blue">5</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Comprimidos Recubiertos</span>
+                            <span class="font-bold text-dark-blue">3</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Tabletas Simples</span>
+                            <span class="font-bold text-dark-blue">8</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jarabes/Suspensiones -->
+                <div class="mb-6">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-prescription-bottle-alt text-teal-blue mr-2"></i>
+                        <h4 class="text-sm font-bold text-dark-blue">Jarabes/Suspensiones</h4>
+                        <span class="ml-2 bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full font-bold">6</span>
+                    </div>
+                    <div class="space-y-2 pl-5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Jarabe</span>
+                            <span class="font-bold text-dark-blue">4</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Suspensión</span>
+                            <span class="font-bold text-dark-blue">2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Otros Formatos -->
+                <div class="mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-mortar-pestle text-purple-600 mr-2"></i>
+                        <h4 class="text-sm font-bold text-dark-blue">Otros Formatos</h4>
+                        <span class="ml-2 bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-bold">4</span>
+                    </div>
+                    <div class="space-y-2 pl-5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Gel/Crema/Tubo</span>
+                            <span class="font-bold text-dark-blue">3</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">Óvulo</span>
+                            <span class="font-bold text-dark-blue">1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Top Marcas -->
+                <div class="mb-6">
+                    <h4 class="text-sm font-bold text-dark-blue mb-3 flex items-center">
+                        <i class="fas fa-star text-amber-500 mr-2"></i>Marcas con Más SKUs
+                    </h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">IBUPRONEX</span>
+                            <span class="font-bold text-dark-blue">4 SKUs</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">IBULVINEX</span>
+                            <span class="font-bold text-dark-blue">2 SKUs</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">ISOCLEAR</span>
+                            <span class="font-bold text-dark-blue">2 SKUs</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">NITAZOX</span>
+                            <span class="font-bold text-dark-blue">2 SKUs</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gray-700">CLARIMAX</span>
+                            <span class="font-bold text-dark-blue">2 SKUs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Summary -->
+                <div class="stats-card">
+                    <h5 class="text-xs font-bold text-primary-blue mb-2">Resumen del Pipeline</h5>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-dark-blue">41</div>
+                            <div class="text-xs text-gray-600">Total SKUs</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-teal-blue">22</div>
+                            <div class="text-xs text-gray-600">Marcas Diferentes</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-amber-600">16</div>
+                            <div class="text-xs text-gray-600">Tabletas</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-primary-blue">10</div>
+                            <div class="text-xs text-gray-600">Cápsulas</div>
+                        </div>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-blue-100">
+                        <div class="text-xs text-gray-600 text-center">
+                            <i class="fas fa-clock text-secondary-blue mr-1"></i>
+                            Estado: En revisión por autoridad sanitaria
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Complete Product List -->
+        <div class="w-8/12 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden">
+            <div class="bg-secondary-blue/10 px-6 py-4 border-b border-secondary-blue/20 flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-bold text-secondary-blue"><i class="fas fa-list-check mr-2"></i>Lista Completa de Productos</h3>
+                    <p class="text-xs text-secondary-blue">41 SKUs | En proceso de aprobación regulatoria</p>
+                </div>
+                <span class="bg-secondary-blue text-white text-xs font-bold px-3 py-1 rounded-full">PIPELINE</span>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scroll flex-1">
+                <!-- Product List -->
+                <div class="space-y-2">
+                    
+                    <!-- Category: Cápsulas -->
+                    <div class="category-header">
+                        <h4 class="text-sm font-bold text-dark-blue"><i class="fas fa-capsules text-primary-blue mr-2"></i>Cápsulas (10 productos)</h4>
+                    </div>
+                    
+                    <!-- Cápsulas products -->
+                    <div class="product-card">
+                        <div class="brand-name">FLORAZEN</div>
+                        <div class="product-name">FLORAZEN 250MG CJA X 10 CAPSULAS</div>
+                        <div class="dci-info">Sachoromycces Boulardii</div>
+                        <div class="dosage-badge"><i class="fas fa-capsule dosage-icon"></i>Cápsulas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">HIGALIFES</div>
+                        <div class="product-name">HIGALIFES CJA X 30 CAPSULAS BLANDAS</div>
+                        <div class="dci-info">Lecithine + Vitamin</div>
+                        <div class="dosage-badge"><i class="fas fa-capsules dosage-icon"></i>Cápsulas Blandas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">CLINDAMEX</div>
+                        <div class="product-name">CLINDAMEX 300MG X 100 CAPSULAS</div>
+                        <div class="dci-info">Clindamicina 300 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-capsule dosage-icon"></i>Cápsulas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">IBUPRONEX</div>
+                        <div class="product-name">IBUPRONEX 200MG</div>
+                        <div class="dci-info">Ibuprofeno 200</div>
+                        <div class="dosage-badge"><i class="fas fa-capsules dosage-icon"></i>Cápsulas Blandas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">IBUPRONEX</div>
+                        <div class="product-name">IBUPRONEX 400MG</div>
+                        <div class="dci-info">Ibuprofeno 400</div>
+                        <div class="dosage-badge"><i class="fas fa-capsules dosage-icon"></i>Cápsulas Blandas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">IBUPRONEX</div>
+                        <div class="product-name">IBUPRONEX 600MG</div>
+                        <div class="dci-info">Ibuprofeno 600</div>
+                        <div class="dosage-badge"><i class="fas fa-capsules dosage-icon"></i>Cápsulas Blandas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">IBUPRONEX</div>
+                        <div class="product-name">IBUPRONEX 800MG</div>
+                        <div class="dci-info">Ibuprofeno 800</div>
+                        <div class="dosage-badge"><i class="fas fa-capsules dosage-icon"></i>Cápsulas Blandas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">ISOCLEAR</div>
+                        <div class="product-name">ISOCLEAR 10MG</div>
+                        <div class="dci-info">Isototeina 10 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-capsule dosage-icon"></i>Cápsulas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">ISOCLEAR</div>
+                        <div class="product-name">ISOCLEAR 20MG</div>
+                        <div class="dci-info">Isototeina 20 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-capsule dosage-icon"></i>Cápsulas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">HEPAMAX</div>
+                        <div class="product-name">HEPAMAX DUO 150MG</div>
+                        <div class="dci-info">Silimarina 150 Mg + Fosfatidilcolina 150 Mg</div>
+                        <div class="dosage-badge"><i class="fas fa-capsule dosage-icon"></i>Cápsula</div>
+                    </div>
+                    
+                    <!-- Category: Tabletas -->
+                    <div class="category-header">
+                        <h4 class="text-sm font-bold text-dark-blue"><i class="fas fa-tablets text-amber-600 mr-2"></i>Tabletas/Comprimidos (16 productos)</h4>
+                    </div>
+                    
+                    <!-- Tabletas products -->
+                    <div class="product-card">
+                        <div class="brand-name">KOFSTOP</div>
+                        <div class="product-name">KOFSTOP 8MG CJA X 30 TABLETAS</div>
+                        <div class="dci-info">BROMEHIXINA 8MG</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">DAYGRIP</div>
+                        <div class="product-name">DAYGRIP X 2 SOBRES – CAJA X 120 TABLETAS</div>
+                        <div class="dci-info">Paracetamol + Fenilefrina + Clorfenamina</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">LOPERAMAX</div>
+                        <div class="product-name">LOPERAMAX 2MG</div>
+                        <div class="dci-info">loperamida 2 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">SIMETIFLEX</div>
+                        <div class="product-name">SIMETIFLEX 80MG</div>
+                        <div class="dci-info">Simeticona 80 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">DICLOFENEX</div>
+                        <div class="product-name">DICLOFENEX 50MG</div>
+                        <div class="dci-info">diclofenaco 50 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">DOLOMAX</div>
+                        <div class="product-name">DOLOMAX FORTE 500MG</div>
+                        <div class="dci-info">Paracetamol 500 mg + Cafeina 65 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">NEXTDAY</div>
+                        <div class="product-name">NEXTDAY 0.75MG</div>
+                        <div class="dci-info">Levonorgestrel 0.75mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">DIMERELIEF</div>
+                        <div class="product-name">DIMERELIEF 50MG</div>
+                        <div class="dci-info">Dimenhidrinato 50mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">AEROLORA</div>
+                        <div class="product-name">AEROLORA 10MG</div>
+                        <div class="dci-info">Loratadina 10 Mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">LEVOALLER</div>
+                        <div class="product-name">LEVOALLER 5MG</div>
+                        <div class="dci-info">Levocetirizina 5mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablet dosage-icon"></i>Tableta Recubierta</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">CLARIMAX</div>
+                        <div class="product-name">CLARIMAX 500MG</div>
+                        <div class="dci-info">Claritromicina 500mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">RELAFLEX</div>
+                        <div class="product-name">RELAFLEX 250/300MG</div>
+                        <div class="dci-info">Clorzoxazona 250 mg, Paracetamol 300 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">NITAZOX</div>
+                        <div class="product-name">NITAZOX 500MG</div>
+                        <div class="dci-info">Nitazoxanida 500 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablet dosage-icon"></i>Tableta Recubierta</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">ORFENADOL</div>
+                        <div class="product-name">ORFENADOL 450/35MG</div>
+                        <div class="dci-info">Paracetamol 450mg, Orfenadrina 35mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablets dosage-icon"></i>Tabletas</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">KETRINOX</div>
+                        <div class="product-name">KETRINOX 10MG</div>
+                        <div class="dci-info">Ketorolaco 10 Mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablet dosage-icon"></i>Tableta Recubierta</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">UROFEN</div>
+                        <div class="product-name">UROFEN 200MG</div>
+                        <div class="dci-info">Fenazopiridina 200mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablet dosage-icon"></i>Tableta Recubierta</div>
+                    </div>
+                    
+                    <!-- Category: Jarabes/Suspensiones -->
+                    <div class="category-header">
+                        <h4 class="text-sm font-bold text-dark-blue"><i class="fas fa-prescription-bottle-alt text-teal-blue mr-2"></i>Jarabes/Suspensiones (6 productos)</h4>
+                    </div>
+                    
+                    <!-- Jarabes products -->
+                    <div class="product-card">
+                        <div class="brand-name">FLORAZEN</div>
+                        <div class="product-name">FLORAZEN 250MG CJA X 10 SOBRES POLVO PARA SUSPENSIÓN ORAL</div>
+                        <div class="dci-info">Sachoromycces Boulardii</div>
+                        <div class="dosage-badge"><i class="fas fa-prescription-bottle dosage-icon"></i>Sachets</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">IBULVINEX</div>
+                        <div class="product-name">IBULVINEX 200 MG CJA X 1 FCO 100ML</div>
+                        <div class="dci-info">Ibuprofeno 200mg/5mL</div>
+                        <div class="dosage-badge"><i class="fas fa-prescription-bottle-alt dosage-icon"></i>Jarabe</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">AMBROCARE</div>
+                        <div class="product-name">AMBROCARE 30MG/5ML CJA X 1 FCO</div>
+                        <div class="dci-info">AMBROXOL 30MG/ML</div>
+                        <div class="dosage-badge"><i class="fas fa-prescription-bottle-alt dosage-icon"></i>Jarabe</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">AEROLORA</div>
+                        <div class="product-name">AEROLORA 5MG</div>
+                        <div class="dci-info">Loratadina 5Mg/5Ml</div>
+                        <div class="dosage-badge"><i class="fas fa-prescription-bottle-alt dosage-icon"></i>Jarabe</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">CLARIMAX</div>
+                        <div class="product-name">CLARIMAX 250MG</div>
+                        <div class="dci-info">Claritromicina 250mg/5m</div>
+                        <div class="dosage-badge"><i class="fas fa-prescription-bottle dosage-icon"></i>Suspensión</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">NITAZOX</div>
+                        <div class="product-name">NITAZOX 100MG</div>
+                        <div class="dci-info">Nitazoxanida 100 mg</div>
+                        <div class="dosage-badge"><i class="fas fa-prescription-bottle dosage-icon"></i>Suspensión</div>
+                    </div>
+                    
+                    <!-- Category: Otros Formatos -->
+                    <div class="category-header">
+                        <h4 class="text-sm font-bold text-dark-blue"><i class="fas fa-mortar-pestle text-purple-600 mr-2"></i>Otros Formatos (4 productos)</h4>
+                    </div>
+                    
+                    <!-- Otros productos -->
+                    <div class="product-card">
+                        <div class="brand-name">DICLOFENEX</div>
+                        <div class="product-name">DICLOFENEX 2% GEL</div>
+                        <div class="dci-info">diclofenaco gel 2%</div>
+                        <div class="dosage-badge"><i class="fas fa-tube dosage-icon"></i>Tubo</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">CLOBETAZONE</div>
+                        <div class="product-name">CLOBETAZONE CREMA</div>
+                        <div class="dci-info">Clotrimazol 1% + Gentamicina 0,1%+ Betametasona 0,05%</div>
+                        <div class="dosage-badge"><i class="fas fa-tube dosage-icon"></i>Tubo</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">METROGYN</div>
+                        <div class="product-name">METROGYN N 500MG</div>
+                        <div class="dci-info">Metronidazol 500 + Nistatina 100</div>
+                        <div class="dosage-badge"><i class="fas fa-pills dosage-icon"></i>Ovulo</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">AZITROVEN</div>
+                        <div class="product-name">AZITROVEN 200MG</div>
+                        <div class="dci-info">Azitromicina 200mg/5ml</div>
+                        <div class="dosage-badge"><i class="fas fa-prescription-bottle dosage-icon"></i>Suspensión</div>
+                    </div>
+                    
+                    <!-- Category: Tabletas Recubiertas/Comprimidos -->
+                    <div class="category-header">
+                        <h4 class="text-sm font-bold text-dark-blue"><i class="fas fa-tablet text-amber-700 mr-2"></i>Tabletas Recubiertas/Comprimidos (5 productos)</h4>
+                    </div>
+                    
+                    <!-- Tabletas recubiertas -->
+                    <div class="product-card">
+                        <div class="brand-name">AMOCLAV</div>
+                        <div class="product-name">AMOCLAV FORTE 500/125MG</div>
+                        <div class="dci-info">Amoxicilina - Acido clavulanico 500mg /125mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablet dosage-icon"></i>Tableta Recubierta</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">AZITROVEN</div>
+                        <div class="product-name">AZITROVEN 500MG</div>
+                        <div class="dci-info">Azitromicina 500mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablet dosage-icon"></i>Tableta Recubierta</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">DOLOULTRA</div>
+                        <div class="product-name">DOLOULTRA 1G</div>
+                        <div class="dci-info">Paracetamol 1G</div>
+                        <div class="dosage-badge"><i class="fas fa-pill dosage-icon"></i>Comprimido</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">NAPROMAX</div>
+                        <div class="product-name">NAPROMAX 550MG</div>
+                        <div class="dci-info">Naproxeno Sódico 550 Mg</div>
+                        <div class="dosage-badge"><i class="fas fa-tablet dosage-icon"></i>Recubierta</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="brand-name">DOLOSPAS</div>
+                        <div class="product-name">DOLOSPAS 10/500MG</div>
+                        <div class="dci-info">Paracetamol + Hioscina 10mg/500mg</div>
+                        <div class="dosage-badge"><i class="fas fa-pill dosage-icon"></i>Comprimido Recubierto</div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Summary Footer -->
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-clipboard-check text-secondary-blue mr-1"></i>
+                            Total: 41 productos | 22 marcas diferentes
+                        </div>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-blue-50 text-primary-blue px-2 py-1 rounded">Cápsulas: 10</span>
+                            <span class="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded">Tabletas: 16</span>
+                            <span class="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded">Jarabes: 6</span>
+                            <span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded">Otros: 9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="h-10 bg-white border-t border-gray-200 flex items-center justify-between px-12 pl-18 flex-shrink-0">
+        <p class="text-gray-400 text-xs font-light">
+            <i class="fas fa-lock mr-2"></i>Confidencial | CSP LifeSciences – Pipeline de Registros 2026
+        </p>
+        <p class="text-gray-400 text-xs font-light">14</p>
+    </div>
+</div>
+</body>
+</html>
